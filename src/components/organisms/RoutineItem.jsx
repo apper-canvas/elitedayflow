@@ -3,9 +3,9 @@ import ApperIcon from "@/components/ApperIcon";
 import Checkbox from "@/components/atoms/Checkbox";
 import Card from "@/components/atoms/Card";
 import { cn } from "@/utils/cn";
-import React, { useState } from "react";
+import React, { useState, forwardRef } from "react";
 
-const RoutineItem = ({ routine, onToggle }) => {
+const RoutineItem = forwardRef(({ routine, onToggle }, ref) => {
   const [showConfetti, setShowConfetti] = useState(false);
 
   const handleToggle = () => {
@@ -18,6 +18,7 @@ const RoutineItem = ({ routine, onToggle }) => {
 
   return (
     <motion.div
+      ref={ref}
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, x: -20 }}
@@ -96,8 +97,10 @@ const RoutineItem = ({ routine, onToggle }) => {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
+</motion.div>
   );
-};
+});
+
+RoutineItem.displayName = 'RoutineItem';
 
 export default RoutineItem;
