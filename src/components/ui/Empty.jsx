@@ -1,12 +1,13 @@
+import React from "react";
 import { motion } from "framer-motion";
 import ApperIcon from "@/components/ApperIcon";
 
-const Empty = ({ 
+const Empty = React.forwardRef(({ 
   icon = "Inbox",
   title = "Nothing here yet",
   description = "Get started by adding your first item",
   action
-}) => {
+}, ref) => {
   return (
     <motion.div
       className="flex flex-col items-center justify-center py-12 px-4"
@@ -50,8 +51,10 @@ const Empty = ({
           {action}
         </motion.div>
       )}
-    </motion.div>
+</motion.div>
   );
-};
+});
+
+Empty.displayName = "Empty";
 
 export default Empty;
