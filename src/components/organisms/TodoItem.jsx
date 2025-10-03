@@ -4,9 +4,8 @@ import Button from "@/components/atoms/Button";
 import Checkbox from "@/components/atoms/Checkbox";
 import Badge from "@/components/atoms/Badge";
 import Card from "@/components/atoms/Card";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/cn";
 import React from "react";
-
 const TodoItem = ({ todo, onToggle, onDelete, onPriorityChange }) => {
   const getPriorityColor = (priority) => {
     switch (priority) {

@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import ApperIcon from "@/components/ApperIcon";
 import Checkbox from "@/components/atoms/Checkbox";
 import Card from "@/components/atoms/Card";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/cn";
 import React, { useState } from "react";
 
 const RoutineItem = ({ routine, onToggle }) => {
