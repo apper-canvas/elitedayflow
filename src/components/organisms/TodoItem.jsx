@@ -44,8 +44,8 @@ const TodoItem = ({ todo, onToggle, onDelete, onPriorityChange }) => {
         <div className="flex items-start gap-3">
           <div className="pt-0.5">
             <Checkbox
-              checked={todo.completed}
-              onChange={() => onToggle(todo.id, !todo.completed)}
+checked={todo.completed_c}
+              onChange={() => onToggle(todo.id, !todo.completed_c)}
             />
           </div>
 
@@ -54,25 +54,25 @@ const TodoItem = ({ todo, onToggle, onDelete, onPriorityChange }) => {
               <span
                 className={cn(
                   "text-sm font-medium transition-all duration-200",
-                  todo.completed
+todo.completed_c
                     ? "line-through text-slate-400"
                     : "text-slate-900"
                 )}
               >
-                {todo.text}
+                {todo.text_c}
               </span>
             </div>
             
             <div className="flex items-center gap-2">
-              <Badge variant={getPriorityColor(todo.priority)}>
-                {getPriorityLabel(todo.priority)}
+<Badge variant={getPriorityColor(todo.priority_c)}>
+                {getPriorityLabel(todo.priority_c)}
               </Badge>
             </div>
           </div>
 
           <div className="flex items-center gap-1">
             <select
-              value={todo.priority}
+value={todo.priority_c}
               onChange={(e) => onPriorityChange(todo.id, e.target.value)}
               className="text-xs px-2 py-1 border border-slate-200 rounded bg-white hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-secondary-500"
             >

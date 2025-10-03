@@ -14,10 +14,10 @@ import { dateUtils } from "@/utils/dateUtils";
 const MeetingSection = ({ dateString, meetings, onUpdate }) => {
   const [showModal, setShowModal] = useState(false);
 
-  const handleQuickAdd = (title) => {
+const handleQuickAdd = (title_c) => {
     const now = new Date();
     const currentTime = `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
-    handleAddMeeting({ time: currentTime, title, description: "" });
+    handleAddMeeting({ time_c: currentTime, title_c, description_c: "" });
   };
 
   const handleAddMeeting = async (meetingData) => {

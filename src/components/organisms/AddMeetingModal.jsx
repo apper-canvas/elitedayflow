@@ -7,10 +7,10 @@ import Textarea from "@/components/atoms/Textarea";
 import FormField from "@/components/molecules/FormField";
 
 const AddMeetingModal = ({ isOpen, onClose, onAdd }) => {
-  const [formData, setFormData] = useState({
-    time: "",
-    title: "",
-    description: ""
+const [formData, setFormData] = useState({
+    time_c: "",
+    title_c: "",
+    description_c: ""
   });
   const [errors, setErrors] = useState({});
 
@@ -18,9 +18,8 @@ const AddMeetingModal = ({ isOpen, onClose, onAdd }) => {
     e.preventDefault();
     const newErrors = {};
     
-    if (!formData.time) newErrors.time = "Time is required";
-    if (!formData.title.trim()) newErrors.title = "Title is required";
-    
+if (!formData.time_c) newErrors.time_c = "Time is required";
+    if (!formData.title_c.trim()) newErrors.title_c = "Title is required";
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
@@ -79,8 +78,8 @@ const AddMeetingModal = ({ isOpen, onClose, onAdd }) => {
               <FormField label="Time" required error={errors.time}>
                 <Input
                   type="time"
-                  value={formData.time}
-                  onChange={(e) => setFormData({ ...formData, time: e.target.value })}
+value={formData.time_c}
+                  onChange={(e) => setFormData({ ...formData, time_c: e.target.value })}
                   error={!!errors.time}
                 />
               </FormField>
@@ -89,8 +88,8 @@ const AddMeetingModal = ({ isOpen, onClose, onAdd }) => {
                 <Input
                   type="text"
                   placeholder="Meeting title"
-                  value={formData.title}
-                  onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+value={formData.title_c}
+                  onChange={(e) => setFormData({ ...formData, title_c: e.target.value })}
                   error={!!errors.title}
                 />
               </FormField>
@@ -98,8 +97,8 @@ const AddMeetingModal = ({ isOpen, onClose, onAdd }) => {
               <FormField label="Description">
                 <Textarea
                   placeholder="Meeting description (optional)"
-                  value={formData.description}
-                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+value={formData.description_c}
+                  onChange={(e) => setFormData({ ...formData, description_c: e.target.value })}
                   rows={3}
                 />
               </FormField>

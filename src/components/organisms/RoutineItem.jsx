@@ -9,7 +9,7 @@ const RoutineItem = forwardRef(({ routine, onToggle }, ref) => {
   const [showConfetti, setShowConfetti] = useState(false);
 
   const handleToggle = () => {
-    if (!routine.completed) {
+if (!routine.completed_c) {
       setShowConfetti(true);
       setTimeout(() => setShowConfetti(false), 1000);
     }
@@ -28,24 +28,24 @@ const RoutineItem = forwardRef(({ routine, onToggle }, ref) => {
       <Card hoverable className="p-4">
         <div className="flex items-center gap-3">
           <Checkbox
-            checked={routine.completed}
+checked={routine.completed_c}
             onChange={handleToggle}
           />
 
           <div className="flex-1 min-w-0">
             <span
               className={cn(
-                "text-sm font-medium transition-all duration-200",
-                routine.completed
+"text-sm font-medium transition-all duration-200",
+                routine.completed_c
                   ? "line-through text-slate-400"
                   : "text-slate-900"
               )}
             >
-              {routine.title}
+              {routine.title_c}
             </span>
           </div>
 
-          {routine.streak > 0 && (
+{routine.streak_c > 0 && (
             <motion.div
               className="flex items-center gap-1.5 px-2.5 py-1 bg-gradient-to-r from-accent-100 to-amber-100 rounded-full"
               initial={{ scale: 0 }}
@@ -54,7 +54,7 @@ const RoutineItem = forwardRef(({ routine, onToggle }, ref) => {
             >
               <ApperIcon name="Flame" size={14} className="text-accent-600" />
               <span className="text-xs font-semibold text-accent-700">
-                {routine.streak}
+                {routine.streak_c}
               </span>
             </motion.div>
           )}

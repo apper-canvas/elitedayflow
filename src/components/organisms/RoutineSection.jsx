@@ -1,17 +1,18 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { toast } from "react-toastify";
-import ApperIcon from "@/components/ApperIcon";
-import RoutineItem from "@/components/organisms/RoutineItem";
-import Empty from "@/components/ui/Empty";
 import { noteService } from "@/services/api/noteService";
+import React from "react";
+import ApperIcon from "@/components/ApperIcon";
+import Empty from "@/components/ui/Empty";
+import RoutineItem from "@/components/organisms/RoutineItem";
 
 const RoutineSection = ({ dateString, routines, onUpdate }) => {
-  const handleToggleRoutine = async (routineId, completed) => {
+const handleToggleRoutine = async (routineId, completed_c) => {
     try {
-      await noteService.updateRoutine(dateString, routineId, { completed });
+await noteService.updateRoutine(dateString, routineId, { completed_c });
       const updatedNote = await noteService.getNoteForDate(dateString);
       onUpdate(updatedNote);
-      if (completed) {
+      if (completed_c) {
         toast.success("Routine completed! Keep the streak going! 🔥");
       }
     } catch (error) {
@@ -19,8 +20,8 @@ const RoutineSection = ({ dateString, routines, onUpdate }) => {
     }
   };
 
-  const completedCount = routines.filter(r => r.completed).length;
-  const totalStreak = routines.reduce((sum, r) => sum + r.streak, 0);
+const completedCount = routines.filter(r => r.completed_c).length;
+  const totalStreak = routines.reduce((sum, r) => sum + (r.streak_c || 0), 0);
 
   return (
     <div className="flex flex-col h-full">

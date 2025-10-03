@@ -10,8 +10,8 @@ import { noteService } from "@/services/api/noteService";
 
 const TodoSection = ({ dateString, todos, onUpdate }) => {
   const handleQuickAdd = async (text) => {
-    try {
-      await noteService.addTodo(dateString, { text, priority: "medium" });
+try {
+      await noteService.addTodo(dateString, { text_c: text, priority_c: "medium" });
       const updatedNote = await noteService.getNoteForDate(dateString);
       onUpdate(updatedNote);
       toast.success("Todo added!");
@@ -22,7 +22,7 @@ const TodoSection = ({ dateString, todos, onUpdate }) => {
 
   const handleToggleTodo = async (todoId, completed) => {
     try {
-      await noteService.updateTodo(dateString, todoId, { completed });
+await noteService.updateTodo(dateString, todoId, { completed_c: completed });
       const updatedNote = await noteService.getNoteForDate(dateString);
       onUpdate(updatedNote);
       if (completed) {
@@ -46,7 +46,7 @@ const TodoSection = ({ dateString, todos, onUpdate }) => {
 
   const handlePriorityChange = async (todoId, priority) => {
     try {
-      await noteService.updateTodo(dateString, todoId, { priority });
+await noteService.updateTodo(dateString, todoId, { priority_c: priority });
       const updatedNote = await noteService.getNoteForDate(dateString);
       onUpdate(updatedNote);
     } catch (error) {
@@ -65,7 +65,7 @@ const TodoSection = ({ dateString, todos, onUpdate }) => {
     }
   };
 
-  const completedCount = todos.filter(t => t.completed).length;
+const completedCount = todos.filter(t => t.completed_c).length;
   const hasCompleted = completedCount > 0;
 
   return (
